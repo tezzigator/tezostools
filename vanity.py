@@ -16,7 +16,6 @@ for a in range (1, 999999999999999999):
     blake2bhash = blake2b(publicbytes, digest_size=20).digest()
     shabytes = sha256(sha256(tz1prefix + blake2bhash).digest()).digest()[:4]
     pkhash = b58encode(tz1prefix + blake2bhash + shabytes).decode()
-
     if pkhash[3:len(argv[1])+3] == argv[1]:
         privatebytes = signing_key.encode() + publicbytes
         prefixedprivatebytes = edsklongprefix + privatebytes

@@ -24,5 +24,6 @@ for a in range (0, 999999999):
         edsk = b58encode(prefixedprivatebytes+shabytes).decode()
         print(edsk)
         print(pkhash)
-        if a % 10000 == 0: print(str(a))
         break
+    
+    if a % 10000 == 0: print(str(a))

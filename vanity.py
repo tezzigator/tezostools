@@ -22,7 +22,7 @@ for a in range (1, 999999999999999999):
         prefixedprivatebytes = edsklongprefix + privatebytes
         shabytes = sha256(sha256(prefixedprivatebytes).digest()).digest()[:4]
         edsk = b58encode(prefixedprivatebytes+shabytes).decode()
-        print(str(a))
+        print(f"{a:,d}")
         print(edsk)
         print(pkhash)
         break

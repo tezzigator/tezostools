@@ -9,7 +9,7 @@ edsklongprefix = bytes.fromhex('2bf64e07') # decimal is { (byte) 43, (byte) 246,
 edpkPrefix = bytes.fromhex('0d0f25d9') # decimal is { (byte) 13, (byte) 15, (byte) 37, (byte) 217 };
 tz1prefix =  bytes.fromhex('06a19f') # decimal is { (byte) 6, (byte) 161, (byte) 159 };
 
-while 1:
+for a in range (0, 999999999):
     signing_key = nacl.signing.SigningKey.generate()
     publicbytes = signing_key.verify_key.encode()
 
@@ -25,3 +25,4 @@ while 1:
         print(edsk)
         print(pkhash)
         break
+        if a % 10000 == 0: print(str(a))

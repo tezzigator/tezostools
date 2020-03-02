@@ -12,10 +12,9 @@ tz1prefix =  bytes.fromhex('06a19f') # decimal is { (byte) 6, (byte) 161, (byte)
 for a in range (1, 999999999999999999):
     signing_key = nacl.signing.SigningKey.generate()
     publicbytes = signing_key.verify_key.encode()
-
     blake2bhash = blake2b(publicbytes, digest_size=20).digest()
     shabytes = sha256(sha256(tz1prefix + blake2bhash).digest()).digest()[:4]
-    pkhash = b58encode(tz1prefix + blake2bhash + shabytes).decode()
+    pkhash = b58encode(tz1prefix + blake2bhash + shabytes).decode()    
     if pkhash[3:len(argv[1])+3] == argv[1]:
         privatebytes = signing_key.encode() + publicbytes
         prefixedprivatebytes = edsklongprefix + privatebytes
@@ -25,5 +24,4 @@ for a in range (1, 999999999999999999):
         print(edsk)
         print(pkhash)
         break
-    
     if a % 10000 == 0: print(f"{a:,d}")
